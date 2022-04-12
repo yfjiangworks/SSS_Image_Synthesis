@@ -1,3 +1,5 @@
+![Image](resources/fig1.png)
+
 # Introduction
 
 
