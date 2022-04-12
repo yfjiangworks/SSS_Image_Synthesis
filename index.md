@@ -5,9 +5,9 @@ Overview of the proposed method. Subfigure (a) indicates the original StyleGAN2 
 
 ![Image](resources/fig2.gif)
 
-![Image](https://github.com/yfjiangworks/COVID19_Action_Synthesis/blob/gh-pages/resources/fig3.gif)
+![Image](resources/fig3.gif)
 <p align="center">
-Two examples of synthetic action sequences. Subfigure (a) indicates the Cough action category, while Subfigure (b) indicates the Blow nose action category.
+Two examples of synthetic action sequences. Upper sequence indicates the Cough action category, while below sequence indicates the Blow nose action category.
 </p>
 
 
