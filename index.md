@@ -1,5 +1,5 @@
-![Overview of the proposed method. Subfigure (a) indicates the original StyleGAN2 generation approach. Subfigure (b) indicates the proposed method.](resources/fig1.png)
-
+![Image](resources/fig1.png)
+*Overview of the proposed method. Subfigure (a) indicates the original StyleGAN2 generation approach. Subfigure (b) indicates the proposed method.*
 # Introduction
 
 
