@@ -3,6 +3,12 @@
 Overview of the proposed method. Subfigure (a) indicates the original StyleGAN2 generation approach. Subfigure (b) indicates the proposed method.
 </p>
 
+![Image](resources/fig2.png)
+![Image](resources/fig3.png)
+<p align="center">
+Two examples of synthetic action sequences. Subfigure (a) indicates the Cough action category, while Subfigure (b) indicates the Blow nose action category.
+</p>
+
 
 # Introduction
 
