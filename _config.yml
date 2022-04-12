@@ -1,1 +1,4 @@
 theme: jekyll-theme-cayman
+
+title: Towards Efficient COVID-19 Detection with Skeleton-Based Action Synthesis
+description: A novel action sequence synthesis method aims at tackling the COVID-19 symptoms detection task.
