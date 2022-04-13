@@ -17,7 +17,8 @@ Over the past two years, Coronavirus disease 2019 (COVID-19) caused a significan
 Overview of the proposed method. Subfigure (a) indicates the original StyleGAN2 generation approach. Subfigure (b) indicates the proposed method.
 </p>
 
+
 We introduce the proposed method in this section with details. In above figure, we demonstrate the overview of the proposed method and compare it to the original StyleGAN2 generation approach. Basically, a traditional StyleGAN2 generation process starts from sampling a latent vector ***z*** from latent space ***Z*** and map it into latent vector ***w*** with a mapping network ***F(•)***. Then, generator ***G(•)*** takes both latent vector ***w*** and random noise vector ***n*** and synthesizes a fake skeleton image. The drawback of the traditional StyleGAN2 generation process is that it is not controllable for certain action categories, for instance, coughing and blowing the nose. Comparing to the traditional StyleGAN2 generation process, the proposed method takes a reference input of a real skeleton image. Rather than generating a fake image with a random category, the proposed method can generate synthetic images with a certain category that is conditioned by the reference input.
 
 # Acknowlegements
-This material is based upon work supported by the Air Force Office of Scientific Research under award number FA2386-19-1-4001.  
+This research work is supported by the Air Force Office of Scientific Research under award number FA2386-19-1-4001.  
