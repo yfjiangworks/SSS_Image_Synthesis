@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
 
-title: Towards Efficient COVID-19 Detection with Skeleton-Based Action Synthesis
-description: A novel action sequence synthesis method aims at tackling the COVID-19 symptoms detection task.
+title: COVID-19 CT Image Synthesis with a Conditional Generative Adversarial Network
+description: A novel COVID-19 CT image synthesis method can generate high-quality synthetic data for downstream diagnostic tasks.
