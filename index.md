@@ -25,7 +25,7 @@ Diagnostic performance comparison of few-shot COVID-19 CT diagnostic task (n-sho
 </p>
 
 # Acknowlegements
-This research work is supported by a National Research Foundation (NRF) grant funded by the MSIP of Korea (number 2019R1A2C2009480).
+This research work is supported by the Air Force Office of Scientific Research under award number FA2386-19-1-4001.
 
 # Citation
 ```
