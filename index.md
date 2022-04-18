@@ -1,40 +1,41 @@
 ![Image](resources/fig1.png)
 <p align="center">
-Demonstration of domain shift problem and proposed solution. (A) Model trained on a large synthetic dataset then tested on real data; (B) Model trained on a large real dataset then tested on real data; (C) The proposed model trained on a large synthetic dataset and few real data, then evaluated on real data.
+The SSS image synthesis process. The left part depicts the training procedure while right part shows the testing procedure. The model is divided into three main sections: the image feature extractor, the generator, and the discriminator. The black solid arrow represents the data flow from the real image to the synthesized image, before moving from the discriminator to a region-based decision. The black dotted arrows represent the navigation process for multi-scale semantic segmentation maps. We mark the inputs and outputs of training procedures in blue.
 </p>
 
 
 # Abstract
-
-Coronavirus disease 2019 (COVID-19) is a Public Health Emergency of International Concern infecting more than 40 million people across 188 countries and territories. Chest computed tomography (CT) imaging technique benefits from its high diagnostic accuracy and robustness, it has become an indispensable way for COVID-19 mass testing. Recently, deep learning approaches have become an effective tool for automatic screening of medical images, and it is also being considered for COVID-19 diagnosis. However, the high infection risk involved with COVID-19 leads to relative sparseness of collected labeled data limiting the performance of such methodologies. Moreover, accurately labeling  CT images require expertise of radiologists making the process expensive and time-consuming. In order to tackle the above issues, we propose a supervised domain adaption based COVID-19 CT diagnostic method which can perform effectively when only a small samples of labeled CT scans are available. To compensate for the sparseness of labeled data, the proposed method utilizes a large amount of synthetic COVID-19 CT images and adjusts the networks from the source domain (synthetic data) to the target domain (real data) with a cross-domain training mechanism. Experimental results show that the proposed method achieves state-of-the-art performance on few-shot COVID-19 CT imaging based diagnostic tasks.
+Side-scan sonar (SSS) is a critical sensor device used to explore underwater environments in the deep sea. Gathering SSS data, however, is an expensive and time-consuming task because it requires sensor towing and involves complicated field operations.  Recently, deep learning has been making advances rapidly in the field of computer vision. Benefiting from this development, generative adversarial networks (GANs) have been demonstrated to produce realistic synthetic data of various types, including images and acoustics signals. In this paper, we propose a GAN-based semantic image synthesis model based on generative adversarial network that can generate high-quality SSS images at a low cost in less time. We evaluate the proposed model using both shallow and deep water SSS datasets that include a diverse range of imaging conditions such as high and low sonar operating frequencies and different landscapes. The experimental results show that the proposed method can effectively generate synthesized SSS data characterized by the shape and style of real data, thereby demonstrating its promising potential for SSS data augmentation in diverse SSS relevant machine learning tasks.
 
 # Overview
+In this paper, we formulate the SSS data generation problem as a semantic image synthesis task. The synthesis procedure starts from a random vector ***z*** that obeys the Gaussian distribution of a real image. Random vector ***z*** is then passed to generator network ***G*** to upsample the noise and collect detailed information (e.g., seabed landscape and shadows) from the real SSS image. During the generation process, a segmentation map is used to guide the synthesis of the details. Figure above shows the synthesis process with generator ***G***.
+The proposed method follows the general concept of SPADE \cite{park2019semantic}, which consists of three components: a pixel distribution predictor, a generator, and a discriminator. 
 
+
+# Synthetic SSS image samples
 ![Image](resources/fig2.png)
 <p align="center">
 Overview of the proposed method.
 </p>
 
-In this work, we propose a novel Siamese network based model for a few-shot COVID-19 CT diagnostic task as illustrated in above figure. The Siamese network structure is basically formed in three components: source branch ***f(•)***, target branch ***f(•)*** and prediction branch ***g(•)***.  Source and target branches have the same network structure which consists of a feature extractor and two fully-connected (FC) layers. The prediction branch is a network that contains three FC layers. During the training stage, weight sharing occurs between source and target branches as they take staggered input of synthetic and real. The classification loss ***Lc*** and the cross-domain loss ***Lcp, Lcd*** are used together to construct the overall loss for updating the network. During the test stage, a real CT image is passed through the network, and the network makes a binary diagnostic decision.
-
-
-# Boosted COVID-19 diagnostic performance
 ![Image](resources/fig3.png)
 <p align="center">
-Diagnostic performance comparison of few-shot COVID-19 CT diagnostic task (n-shot: 5-shot, feature extractor: Xception, the best evaluation score is marked in bold. Higher number of the metrics is better.
+SSS object image samples generated under high (left) and low (right) operational frequencies. The first row presents the segmentation maps that pass through the proposed method as input (black pixels: seabed; blue pixels: highlighted area; green pixels: shadows). The second row shows the original SSS images and the third row displays the SSS images generated using the proposed method.
 </p>
 
 # Acknowlegements
-This research work is supported by the Air Force Office of Scientific Research under award number FA2386-19-1-4001.
+This work was funded by the Agency for Defense Development of Korea under Grant UD190005DD.
 
 # Citation
 ```
-@inproceedings{jiang2021few,
-  title={Few-shot learning for ct scan based covid-19 diagnosis},
-  author={Jiang, Yifan and Chen, Han and Ko, Hanseok and Han, David K},
-  booktitle={ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
-  pages={1045--1049},
-  year={2021},
-  organization={IEEE}
+@article{jiang2020side,
+  title={Side-Scan Sonar Image Synthesis Based on Generative Adversarial Network for Images in Multiple Frequencies},
+  author={Jiang, Yifan and Ku, Bonhwa and Kim, Wanjin and Ko, Hanseok},
+  journal={IEEE Geoscience and Remote Sensing Letters},
+  volume={18},
+  number={9},
+  pages={1505--1509},
+  year={2020},
+  publisher={IEEE}
 }
 ```
