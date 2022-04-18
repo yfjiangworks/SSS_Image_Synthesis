@@ -1,28 +1,27 @@
 ![Image](resources/fig1.png)
+<p align="center">
+Demonstration of domain shift problem and proposed solution. (A) Model trained on a large synthetic dataset then tested on real data; (B) Model trained on a large real dataset then tested on real data; (C) The proposed model trained on a large synthetic dataset and few real data, then evaluated on real data.
+</p>
 
 
 # Abstract
 
-Coronavirus disease 2019 (COVID-19) is an ongoing global pandemic that has spread rapidly since December 2019. Real-time reverse transcription polymerase chain reaction (rRT-PCR) and chest computed tomography (CT) imaging both play an important role in COVID-19 diagnosis. Chest CT imaging offers the benefits of quick reporting, a low cost, and high sensitivity for the detection of pulmonary infection. Recently, deep-learning-based computer vision methods have demonstrated great promise for use in medical imaging applications, including X-rays, magnetic resonance imaging, and CT imaging. However, training a deep-learning model requires large volumes of data, and medical staff faces a high risk when collecting COVID-19 CT data due to the high infectivity of the disease. Another issue is the lack of experts available for data labeling. In order to meet the data requirements for COVID-19 CT imaging, we propose a CT image synthesis approach based on a conditional generative adversarial network that can effectively generate high-quality and realistic COVID-19 CT images for use in deep-learning-based medical imaging tasks. Experimental results show that the proposed method outperforms other state-of-the-art image synthesis methods with the generated COVID-19 CT images and indicates promising for various machine learning applications including semantic segmentation and classification.
+Coronavirus disease 2019 (COVID-19) is a Public Health Emergency of International Concern infecting more than 40 million people across 188 countries and territories. Chest computed tomography (CT) imaging technique benefits from its high diagnostic accuracy and robustness, it has become an indispensable way for COVID-19 mass testing. Recently, deep learning approaches have become an effective tool for automatic screening of medical images, and it is also being considered for COVID-19 diagnosis. However, the high infection risk involved with COVID-19 leads to relative sparseness of collected labeled data limiting the performance of such methodologies. Moreover, accurately labeling  CT images require expertise of radiologists making the process expensive and time-consuming. In order to tackle the above issues, we propose a supervised domain adaption based COVID-19 CT diagnostic method which can perform effectively when only a small samples of labeled CT scans are available. To compensate for the sparseness of labeled data, the proposed method utilizes a large amount of synthetic COVID-19 CT images and adjusts the networks from the source domain (synthetic data) to the target domain (real data) with a cross-domain training mechanism. Experimental results show that the proposed method achieves state-of-the-art performance on few-shot COVID-19 CT imaging based diagnostic tasks.
 
 # Overview
 
 ![Image](resources/fig2.png)
 <p align="center">
-Overview of the proposed method. The upper section containing the training process of the global-local generator and multi-resolution discriminator, while the lower right section shows the testing process. Within the global-local generator blocks, two types of generator are present: a global information generator and local detail generator. Two individual training processes and single-joint training process are depicted in three different colorized arrows. DESUM block represents the dynamic element-wise sum process which is shown in purple. The multi-resolution discriminator is depicted in blue. And the dynamic feature matching process (DFM) is also shown as a blue block. The synthesized images are transferred from the generator to the discriminator, and this process is shown as the dashed arrow. The yellow arrow shows the completion step for the process in which the non-lung region for the synthesized lung image is added.
+Overview of the proposed method.
 </p>
 
-In this paper, we propose a cGAN-based COVID-19 CT image synthesis method. Here, COVID-19 CT image synthesis is formulated as a semantic-layout-conditional image-to-image translation task. The structure consisting of two main components: a global-local generator and a multi-resolution discriminator. During the training stage, the semantic segmentation map of a corresponding CT image is passed to the global-local generator, where the label information from the segmentation map is extracted via down-sampling and re-rendered to generate a synthesized image via up-sampling. The segmentation map is then concatenated with the corresponding CT image or synthesized CT image to form the input for the multi-resolution discriminator, which is used to distinguish the input as either real or synthesized. The decisions from the discriminator are used to calculate the loss and update the parameters for both the generator and discriminator. During the testing stage, only the generator is involved. A data augmented segmentation map is used as input for the generator, from which a realistic synthesized image can be obtained after extraction and re-rendering. This synthesized lung CT image is then combined with the non-lung area to form a completely synthesized CT image as the final result. Above figure presents an overview of the proposed method.
+In this work, we propose a novel Siamese network based model for a few-shot COVID-19 CT diagnostic task as illustrated in above figure. The Siamese network structure is basically formed in three components: source branch ***f(•)***, target branch ***f(•)*** and prediction branch ***g(•)***.  Source and target branches have the same network structure which consists of a feature extractor and two fully-connected (FC) layers. The prediction branch is a network that contains three FC layers. During the training stage, weight sharing occurs between source and target branches as they take staggered input of synthetic and real. The classification loss ***Lc*** and the cross-domain loss ***Lcp, Lcd*** are used together to construct the overall loss for updating the network. During the test stage, a real CT image is passed through the network, and the network makes a binary diagnostic decision.
 
-# Synthetic COVID-19 CT samples
+
+# Boosted COVID-19 diagnostic performance
 ![Image](resources/fig3.png)
 <p align="center">
-Synthetic lung CT images generated by the proposed method and the other two competitive state-of-the-art image synthesis approaches. The first column shows the segmentation map including the lung (red), ground-glass opacity (blue), and consolidation (green) areas. The second column shows the original CT image. The third, fourth, fifth columns show the synthetic samples which are generated by the proposed method, SEAN and SPADE in order. Each case is presented with zoom in order to show more details, and the yellow arrows point out the special area which is described in the main text.
-</p>
-
-![Image](resources/fig4.png)
-<p align="center">
-Synthetic lung CT images generated by the proposed method. Eight samples are selected, each from an individual patient. The first column shows the segmentation map including the lung (red), ground-glass opacity (blue), and consolidation (green) areas. The second and third columns show the original and synthetic CT images, respectively. The synthetic CT images here merge the synthetic lung CT image and the corresponding real non-lung area. The fourth and fifth columns depict CT images for the original lung and synthesized CT images, respectively.
+Diagnostic performance comparison of few-shot COVID-19 CT diagnostic task (n-shot: 5-shot, feature extractor: Xception, the best evaluation score is marked in bold. Higher number of the metrics is better.
 </p>
 
 # Acknowlegements
@@ -30,14 +29,12 @@ This research work is supported by a National Research Foundation (NRF) grant fu
 
 # Citation
 ```
-@article{jiang2020covid,
-  title={COVID-19 CT image synthesis with a conditional generative adversarial network},
-  author={Jiang, Yifan and Chen, Han and Loew, Murray and Ko, Hanseok},
-  journal={IEEE Journal of Biomedical and Health Informatics},
-  volume={25},
-  number={2},
-  pages={441--452},
-  year={2020},
-  publisher={IEEE}
+@inproceedings{jiang2021few,
+  title={Few-shot learning for ct scan based covid-19 diagnosis},
+  author={Jiang, Yifan and Chen, Han and Ko, Hanseok and Han, David K},
+  booktitle={ICASSP 2021-2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={1045--1049},
+  year={2021},
+  organization={IEEE}
 }
 ```
