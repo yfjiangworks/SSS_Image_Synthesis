@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
 
-title: COVID-19 CT Image Synthesis with a Conditional Generative Adversarial Network
-description: A novel COVID-19 CT image synthesis method can generate high-quality synthetic data for downstream diagnostic tasks. (IEEE JBHI featured article.)
+title: Few-shot Learning for CT Scan based COVID-19 Diagnosis
+description: A novel COVID-19 CT based diagnostic method can effectively utilize synthetic CT scans to boost COVID-19 diagnostic performance. (Accepted by ICASSP2021.)
